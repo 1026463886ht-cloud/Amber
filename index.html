@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>佳西雅报价目录</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <header class="masthead">
+        <div class="brand-lockup">
+          <span class="mark">JXY</span>
+          <div>
+            <p>佳西雅供应链</p>
+            <h1>商品报价目录</h1>
+          </div>
+        </div>
+        <div class="meta">
+          <span id="generatedAt">报价数据载入中</span>
+          <span>报价以最终确认为准</span>
+        </div>
+      </header>
+
+      <section class="search-band">
+        <div>
+          <label for="searchInput">快速查询</label>
+          <input id="searchInput" placeholder="输入品牌、品名、规格、条码、备注" />
+        </div>
+        <div class="search-actions">
+          <button id="searchBtn" type="button">查询</button>
+          <button id="exportVisibleBtn" class="secondary-action" type="button">导出当前结果</button>
+        </div>
+      </section>
+
+      <section class="layout">
+        <aside class="filters">
+          <div class="panel-head">
+            <strong>筛选</strong>
+            <button id="clearBtn" type="button">清空</button>
+          </div>
+          <label>
+            品牌
+            <select id="brandFilter">
+              <option value="">全部品牌</option>
+            </select>
+          </label>
+          <label>
+            分类
+            <select id="categoryFilter">
+              <option value="">全部分类</option>
+            </select>
+          </label>
+          <label>
+            系列
+            <select id="seriesFilter">
+              <option value="">全部系列</option>
+            </select>
+          </label>
+          <label>
+            数据来源
+            <select id="catalogFilter">
+              <option value="">全部来源</option>
+            </select>
+          </label>
+          <div class="price-filter">
+            <span>价格筛选</span>
+            <div class="price-tabs" id="priceTabs">
+              <button class="active" data-min="" data-max="" type="button">全部</button>
+              <button data-min="0" data-max="50" type="button">50 以下</button>
+              <button data-min="50" data-max="100" type="button">50-100</button>
+              <button data-min="100" data-max="200" type="button">100-200</button>
+              <button data-min="200" data-max="" type="button">200 以上</button>
+            </div>
+            <div class="price-range">
+              <input id="minPrice" type="number" min="0" placeholder="最低价" />
+              <input id="maxPrice" type="number" min="0" placeholder="最高价" />
+            </div>
+            <select id="priceField">
+              <option value="dropship_price">按代发价</option>
+              <option value="purchase_price">按集采价</option>
+              <option value="market_price">按市场价</option>
+            </select>
+          </div>
+          <div class="stats" id="stats"></div>
+        </aside>
+
+        <section class="catalog">
+          <div class="catalog-head">
+            <div>
+              <p class="kicker">对客报价</p>
+              <h2 id="resultTitle">全部商品</h2>
+            </div>
+            <span id="resultCount">0 条</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>图片</th>
+                  <th>结构</th>
+                  <th>品牌</th>
+                  <th>商品</th>
+                  <th>规格/内配</th>
+                  <th>集采价</th>
+                  <th>代发价</th>
+                  <th>顺丰/京东</th>
+                  <th>市场价</th>
+                  <th>配送/备注</th>
+                  <th>数据来源</th>
+                </tr>
+              </thead>
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside class="detail" id="detailPanel">
+          <div class="panel-head">
+            <strong>商品详情</strong>
+            <button id="closeDetailBtn" type="button">收起</button>
+          </div>
+          <span class="detail-hint" id="detailHint">点选一行查看</span>
+          <div class="detail-body" id="detailBody">
+            <p class="empty">请选择左侧报价记录。</p>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <div class="toast" id="toast"></div>
+    <script src="./quotes_data.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
